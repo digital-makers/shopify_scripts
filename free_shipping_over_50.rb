@@ -1,10 +1,18 @@
-ELIGIBLE_SERVICES = ['Standard Shipping']
+#This needs to be a "Shipping" script
 
-if Input.cart.subtotal_price_was.cents >= 5000
+#Add the names of your shipping methods that qualify for free shipping to this array
+ELIGIBLE_SERVICES = ['Standard Shipping']
+SUBTOTAL_THRESHOLD_CENTS = 5000
+FREE_SHIPPING_MESSAGE = "Free shipping!"
+
+# -----
+
+
+if Input.cart.subtotal_price_was.cents >= SUBTOTAL_THRESHOLD_CENTS
 
   Input.shipping_rates.each do |shipping_rate|
     if ELIGIBLE_SERVICES.include?(shipping_rate.name)
-      shipping_rate.apply_discount(shipping_rate.price, message: "Free shipping!")
+      shipping_rate.apply_discount(shipping_rate.price, message: FREE_SHIPPING_MESSAGE) 
     end
   end
 
