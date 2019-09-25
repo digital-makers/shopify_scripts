@@ -1,3 +1,5 @@
+# This needs to be a "Line Items" script
+
 customer = Input.cart.customer
 if customer
   # If logged in, this script doesn't need to be run.
